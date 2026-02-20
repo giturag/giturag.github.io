@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>George Gitura Kariuki | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     body { 
       font-family: 'Inter', sans-serif; 
@@ -63,6 +64,29 @@
       border-radius:6px; 
       text-decoration:none; 
     }
+    /* ------Mobile Optimization------ */
+    @media (max-width: 768px) {
+      header h1 { font-size:1.6rem; }
+      header p { font-size:0.95rem; }
+
+      nav { padding:8px 6px; }
+      nav a { margin:4px 6px; font-size:0.9rem; }
+
+      section { margin:22px auto; padding:0 12px; }
+
+      .card { padding:14px; }
+
+      a.btn { display:block; width:100%; text-align:center; margin:8px 0 0 0; }
+    }
+    @media (max-width: 480px) {
+      header img { width:95px; height:95px; }
+
+      header h1 { font-size:1.4rem; }
+
+      h2 { font-size:1.25rem; }
+
+      body { font-size:0.95rem; }
+    }
   </style>
 </head>
 <body>
@@ -108,6 +132,13 @@
       <h3>Experience</h3>
       <ul>
         <li>IT Support & Networking Intern – CUEA (2025)</li>
+        <ul>
+          <li>Supported production network infrastructure for academic and clinical systems </li>
+          <li>Diagnosed and resolved connectivity and access issues using structured root-cause analysis </li>
+          <li>Configured and deployed wireless access points to improve network coverage</li>
+          <li>Assisted users with technical issues while maintaining security best practices </li>
+          <li>Worked with IT teams to ensure system reliability and data protection </li>
+        </ul>
     </ul>
     </div>
 
