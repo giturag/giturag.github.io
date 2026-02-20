@@ -4,146 +4,162 @@
   <meta charset="UTF-8">
   <title>George Gitura Kariuki | Portfolio</title>
   <style>
-    :root {
-      --bg: #0b0f1b;
-      --card: #12182f;
-      --text: #e9ecff;
-      --muted: #a8b1d6;
-      --accent: #7c5cff;
-      --accent2: #1dd1a1;
-      --border: rgba(255, 255, 255, 0.12);
+    body { 
+      font-family: 'Inter', sans-serif; 
+      margin:0; background:#f8f9fb; 
+      color:#222; 
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    header { 
+      background:#0f172a; 
+      color:#fff; 
+      padding:40px 20px; 
+      text-align:center; 
     }
-
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: auto;
-      padding: 30px 20px;
-      line-height: 1.6;
-      background: linear-gradient(135deg, var(--bg), #0a1024);
-      color: var(--text);
+    header img { 
+      width:140px; 
+      height:140px; 
+      border-radius:50%; 
+      object-fit:cover; 
+      border:4px solid #fff; 
     }
-
-    h1, h2 {
-      color: #fff;
+    nav { 
+      background:#020617; 
+      padding:10px; 
+      text-align:center; 
     }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+    nav a { 
+      color:#fff; 
+      margin:0 15px; 
+      text-decoration:none; 
+      font-weight:500; 
     }
-
-    h2 {
-      font-size: 1.6rem;
-      margin-bottom: 15px;
+    section {
+      max-width:1000px; 
+      margin:40px auto; 
+      padding:0 20px; 
     }
-
-    .section {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    h2 { 
+      border-bottom:2px solid #0f172a; 
+      padding-bottom:8px; 
     }
-
-    p {
-      color: var(--muted);
-      margin-bottom: 10px;
+    .card { 
+      background:#fff; 
+      padding:20px; 
+      margin:20px 0; 
+      border-radius:12px; 
+      box-shadow:0 4px 10px rgba(0,0,0,0.05); 
     }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
+    footer { 
+      background:#020617; 
+      color:#fff; 
+      text-align:center; 
+      padding:20px; 
     }
-
-    a:hover {
-      color: var(--accent2);
-      text-decoration: underline;
-    }
-
-    .top-info {
-      margin-bottom: 20px;
-      padding: 15px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-    }
-
-    ul {
-      margin-left: 20px;
-      color: var(--muted);
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 20px;
-      }
-      h1 {
-        font-size: 2rem;
-      }
+    a.btn { 
+      display:inline-block; 
+      background:#0f172a; 
+      color:#fff; 
+      padding:10px 18px; 
+      border-radius:6px; 
+      text-decoration:none; 
     }
   </style>
 </head>
 <body>
 
-  <div class="top-info">
-    <h1>George Gitura Kariuki</h1>
-    <p><strong>Computer Science Student | Aspiring Cybersecurity Professional</strong></p>
+  <header id="home">
+    <img src="images/prof_pic.jpg" alt="Profile Photo">
+  <h1>George Gitura Kariuki</h1>
+    <p><strong><p>Entry-Level Cybersecurity Analyst | Risk-Aware Systems Engineer</p></strong></p>
     <p>
       📧 geogitura@gmail.com <br>
       🔗 GitHub: <a href="https://github.com/giturag">github.com/giturag</a>
     </p>
-  </div>
+  </header>
 
-  <div class="section">
-    <h2>About Me</h2>
-    <p>
-      I am a Computer Science student with interests in cybersecurity, backend development, 
-      and secure system design. I enjoy building practical systems and understanding how 
-      security weaknesses arise in real-world applications.
-    </p>
-  </div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#resume">Resume</a>
+    <a href="#projects">Projects</a>
+    <a href="#labs">Lab Challenges</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <section id="resume">
+    <h2>Resume</h2>
 
-  <div class="section">
-    <h2>Featured Project</h2>
-    <h3>Family Health Dashboard System</h3>
-    <p>
-      A PHP and MySQL-based web application designed to manage family health records 
-      using role-based access control.
-    </p>
+    <div class="card">
+      <h3>About Me</h3>
+      <p>
+        I am a Computer Science student with interests in cybersecurity, backend development, 
+        and secure system design. I enjoy building practical systems and understanding how 
+        security weaknesses arise in real-world applications.
+      </p>
+    </div>
 
-    <ul>
-      <li>Designed relational database schema</li>
-      <li>Implemented authentication and access control</li>
-      <li>Handled sensitive health data with security considerations</li>
-      <li>Built and tested in a Linux environment</li>
+    <div class="card">
+      <h3>Education</h3>
+     <ul>
+      <li>BSc Computer Science – Catholic University of Eastern Africa (Expected 2026)</li>
+      <li>BSc Electrical & Electronic Engineering (Coursework) – JKUAT (2010–2016)</li>
+    </ul> 
+    </div>
+
+    <div class="card">
+      <h3>Experience</h3>
+      <ul>
+        <li>IT Support & Networking Intern – CUEA (2025)</li>
     </ul>
+    </div>
 
-    <p>
-      🔗 <a href="https://github.com/giturag/family-health-dashboard">GitHub Repository</a>
-    </p>
-  </div>
+    <div class="card">
+      <h2>Skills</h2>
+        <li>Network Troubleshooting (LAN/WLAN)</li>
+        <li>Linux Administration (Intermediate)</li>
+        <li>PHP & MySQL (Proficient)</li>
+    </div>
 
-  <div class="section">
-    <h2>Skills</h2>
-    <p><strong>Technical:</strong> PHP, SQL, Python (basic), Linux, Git</p>
-    <p><strong>Security:</strong> Authentication & Authorization, Input Validation, OWASP Top 10 awareness, Burp Suite (basic)</p>
-  </div>
+    <div class="card">
+      <h3>Learning & Interests</h3>
+      <p>
+        Currently learning web application security, vulnerability testing, and secure 
+        system architecture. Interested in ethical hacking and bug bounties.
+      </p>
+    </div>
+  </section>
 
-  <div class="section">
-    <h2>Learning & Interests</h2>
-    <p>
-      Currently learning web application security, vulnerability testing, and secure 
-      system architecture. Interested in ethical hacking and digital banking security.
-    </p>
-  </div>
 
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="card">
+      <h3>Family Health Dashboard</h3>
+        <p>Role-based healthcare system using PHP and MySQL.</p>
+        <p><strong>Technologies:</strong> PHP, MySQL, HTML, Linux</p>
+        <a href="https://github.com/giturag/family-health-dashboard" class="btn">View on GitHub</a>
+        <a href="projects/family-health-dashboard.html" class="btn">View Details</a>
+    </div>
+  </section>
+  <section id="labs">
+    <h2>Lab Challenges</h2>
+
+    <div class="card">
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+
+    <div class="card">
+      <p>Email: <a href="mailto:geogitura@gmail.com">geogitura@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/george-gitura">linkedin.com/in/george-gitura</a></p>
+      <p>GitHub: <a href="https://github.com/giturag">github.com/giturag</a></p>
+      <p>Phone: +254 734 915879</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 George Gitura Kariuki | Cybersecurity Portfolio</p>
+  </footer>
 </body>
 </html>
