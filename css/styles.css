@@ -97,6 +97,67 @@ h2 {
   padding-bottom: 8px;
   margin-bottom: 20px;
 }
+/* =========================
+   MAIN NAV BAR
+========================= */
+
+.main-nav {
+  background: #020617;
+  padding: 12px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-logo a {
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.nav-links a {
+  color: white;
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile nav */
+
+@media (max-width: 768px) {
+
+  .main-nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav-links {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    margin: 6px;
+  }
+}
+
 
 
 /* =========================
@@ -141,6 +202,32 @@ footer {
   text-align: center;
   padding: 20px;
 }
+/* =========================
+   MAIN FOOTER
+========================= */
+
+.main-footer {
+  background: #020617;
+  color: #fff;
+  text-align: center;
+  padding: 25px 15px;
+  margin-top: 60px;
+  font-size: 0.9rem;
+}
+
+.main-footer a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.main-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-links {
+  margin-top: 8px;
+}
+
 
 
 /* =========================
@@ -158,6 +245,35 @@ footer {
   width: 100%;
   border-radius: 8px;
   border: 1px solid #ddd;
+}
+
+/* =========================
+   LAB SCREENSHOTS
+========================= */
+
+.screenshot {
+  margin: 25px 0;
+  text-align: center;
+}
+
+.screenshot img {
+  width: 100%;
+  max-width: 850px;      /* Prevents oversized images */
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.screenshot figcaption {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* Dark mode support */
+.dark .screenshot img {
+  border-color: #1e293b;
 }
 
 
