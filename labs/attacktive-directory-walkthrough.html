@@ -41,8 +41,11 @@
                     enum4linux -a &lt;target-ip&gt;
                 </pre>
 
-                <!-- SCREENSHOT PLACEHOLDER -->
-                 <img src="images/attacktive/" alt="Enum4linux results">
+                <!-- SCREENSHOT -->
+                 <figure class="screenshot">
+                    <img src="images/attacktive/" alt="Enum4linux results">
+                    <figcaption>Enum4linux results</figcaption>
+                 </figure>
 
                  <p>
                     Domain Name discovered: <strong>THM-AD</strong><br>
@@ -50,7 +53,7 @@
                 </p>
                 <p>
                     The invalid TLD people commonly use for their Active Directory Domain is <strong>.local</strong>
-                    rom the hint where the full AD domain is listed as <strong>spookysec.local</strong> 
+                    From the hint where the full AD domain is listed as <strong>spookysec.local</strong> 
                 </p>
 
             </div>
@@ -66,15 +69,19 @@
                     kerbrute userenum --dc &lt;ip&gt; -d THM-AD userlist.txt
                 </pre>
 
-                <!-- SCREENSHOT PLACEHOLDER -->
-                <img src="images/attacktive/kerbrute.png" alt="Kerberos enumeration">
+                <!-- SCREENSHOT  -->
+                 <figure class="screenshot">
+                    <img src="images/attacktive/kerbrute.png" alt="Kerberos enumeration">
+
+                    <figcaption>Kerberos user enumeration results with Kerbrute</figcaption>
+                 </figure>
 
                 <p>
-                Notable accounts discovered:
-                <ul>
-                    <li>svc-admin</li>
-                    <li>backup</li>
-                </ul>
+                    Notable accounts discovered:
+                    <ul>
+                        <li>svc-admin</li>
+                        <li>backup</li>
+                    </ul>
                 </p>
             </div>
 
@@ -100,14 +107,21 @@
                     I was able to query <strong>svc-admin's</strong> account without a password.
                 </p>
 
-                <!-- SCREENSHOT PLACEHOLDER -->
-                <img src="images/attacktive/impacket_asreproasting.png" alt="Kerberos enumeration">
+                <!-- SCREENSHOT  -->
+                 <figure class="screenshot">
+                    <img src="images/attacktive/impacket_asreproasting.png" alt="Querying ASP accounts with Impacket">
+                    <figcaption>Querying ASP accounts with Impacket</figcaption>
+                 </figure>
 
                 <p>
                     Checking out the hashcat examples page and looking for the beginning of the hash, <em>‘$krb5asrep$23’,</em>  the type of hash is Kerberos 5, etype 23, AS-REP. 
                 </p>
-                <!-- SCREENSHOT PLACEHOLDER -->
-                <img src="images/attacktive/kerberos_hash.png" alt="Kerberos enumeration">
+
+                <!-- SCREENSHOT  -->
+                 <figure class="screenshot">
+                    <img src="images/attacktive/kerberos_hash.png" alt="Kerberos hash type">
+                    <figcaption>Determining the Kerberos hash type on hashcat examples</figcaption>
+                 </figure>
 
                 <p>
                     The mode of the hash is <strong>18200</strong>.
@@ -120,8 +134,11 @@
                    john --wordlist=/usr/share/wordlists/rockyou.txt svc_hash.txt  
                 </pre>
 
-                <!-- SCREENSHOT PLACEHOLDER -->
-                <img src="images/attacktive/cracking_the_hash.png" alt="Kerberos enumeration">
+                <!-- SCREENSHOT -->
+                 <figure class="screenshot">
+                    <img src="images/attacktive/cracking_the_hash.png" alt="Cracking the hash with johntheripper">
+                    <figcaption>Cracking the hash with Johntheripper</figcaption>
+                 </figure>
 
                 <p>
                     svc-admin’s password is <strong>management2005.</strong>
@@ -142,7 +159,12 @@
                     smbclient -L &lt;target-ip&gt; -U THM-AD/svc-admin
                 </pre>
                 <!-- SCREENSHOT -->
-                <img src="/images/attacktive/smb_shares.png" alt="SMB shares">
+                 <figure class="screenshot">
+                      <img src="/images/attacktive/smb_shares.png" alt="SMB shares">
+                    <figcaption>Listing shares with SMBClient</figcaption>
+                 </figure>
+
+
                 <p>There are <strong>6</strong> shares.</p>
                 <p>
                     I found encoded backup credentials in the <strong>backup</strong> share and decoded from base64. 
@@ -182,7 +204,10 @@ ip &lt;target-ip&gt;
                 </pre>
 
                 <!-- SCREENSHOT -->
-                <img src="/images/attacktive/hashdump.png" alt="Dumping the NTLM hashes">
+                 <figure class="screenshot">
+                      <img src="/images/attacktive/hashdump.png" alt="Dumping the NTLM hashes">
+                    <figcaption>Dumping the NTLM hashes using Impacket secretsdump.py</figcaption>
+                 </figure>
 
                 <p>
                     The method allowing us to dump the DIT or NTDS.DIT is <strong>DRUSAPI</strong>.
@@ -213,7 +238,10 @@ ip &lt;target-ip&gt;
                 </pre>
 
                 <!--- SCREENSHOT -->
-                <img src="/images/attacktive/evilwinrm.png" alt="Passing the hash with Evil-WinRM">
+                <figure class="screenshot">
+                      <img src="/images/attacktive/evilwinrm.png" alt="Passing the hash with Evil-WinRM">
+                    <figcaption>Passing the hash with Evil-WinRM</figcaption>
+                 </figure>
 
                 <h3>Flags</h3>
                 <ul>
