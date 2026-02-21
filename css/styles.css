@@ -68,6 +68,19 @@ nav a:hover {
   text-decoration: underline;
 }
 
+/* Dark model toggle button */
+.dark-toggle {
+    background: none;
+    border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.dark-toggle:hover {
+  opacity: 0.7;
+}
 
 /* =========================
    MAIN CONTENT
