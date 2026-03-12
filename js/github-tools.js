@@ -1,7 +1,7 @@
 const username = "giturag";
 const container = document.getElementById("tools-container");
 
-fetch(`https://api..github.com/users/${username}/repos`)
+fetch(`https://api.github.com/users/${username}/repos`)
 .then(response => response.json())
 .then(repos => {
 
@@ -24,5 +24,5 @@ fetch(`https://api..github.com/users/${username}/repos`)
 
         container.appendChild(project);
     });
-    
+
 });
