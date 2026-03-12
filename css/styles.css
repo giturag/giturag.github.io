@@ -172,6 +172,62 @@ h2 {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
+/* =========================
+   SECURITY TOOLS GRID
+========================= */
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* =========================
+   SECURITY TOOL CARDS
+========================= */
+
+.tool-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+
+  border: 1px solid #e5e7eb;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.tool-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.tool-card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.tool-card a {
+  margin-top: 12px;
+  display: inline-block;
+  font-weight: 500;
+  color: #0f172a;
+  text-decoration: none;
+}
+
+.tool-card a:hover {
+  text-decoration: underline;
+}
+
 
 /* =========================
    BUTTONS
@@ -312,6 +368,19 @@ pre {
 
 .dark a.btn {
   background: #1e293b;
+}
+
+.dark .tool-card {
+  background: #020617;
+  border: 1px solid #1e293b;
+}
+
+.dark .tool-card p {
+  color: #cbd5f5;
+}
+
+.dark .tool-card a {
+  color: #93c5fd;
 }
 
 
