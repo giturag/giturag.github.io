@@ -379,7 +379,7 @@ pre {
   color: #cbd5f5;
 }
 
-.dark .tool-card a {
+.dark .tool-card a, #contact a {
   color: #93c5fd;
 }
 
