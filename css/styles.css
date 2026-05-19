@@ -43,6 +43,10 @@ header p {
   opacity: 0.9;
 }
 
+header a {
+  color: #93c5fd;
+}
+
 
 /* =========================
    NAVIGATION
