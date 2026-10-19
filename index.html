@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>George Gitura  | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="George Gitura: Computer Science graduate focused on backend development and security analysis. Projects, write-ups and contact details.">
+  <title>George Gitura | Backend Development & Security Analysis</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="shortcut icon" href="/images/online-resume.png" type="image/png">
@@ -12,97 +14,118 @@
   <div id="nav-placeholder"></div>
 
   <header id="home">
-    <img src="images/prof_pic.jpg" alt="Profile Photo">
-  <h1>George Gitura </h1>
-    <p><strong><p>Security Analyst | Web Application Security, Linux & Detection Engineering</p></strong></p>
-    <p>
-      📧 geogitura@gmail.com <br>
-      🔗 GitHub: <a href="https://github.com/giturag">github.com/giturag</a>
+    <img src="images/prof_pic.jpg" alt="Profile photo of George Gitura">
+    <h1>George Gitura</h1>
+    <p class="tagline">Computer Science Graduate | Backend Development &amp; Security Analysis</p>
+    <p class="summary">
+      I build backend systems and learn how to secure them. Looking for junior roles
+      in security analysis or backend development.
     </p>
-  </header>  
-  
-
-  <section id="resume">
-    <h2>Resume</h2>
-
-    <div class="card">
-      <h3>About Me</h3>
-      <p>
-        Security-focused Computer Science graduate with hands-on experience in Linux systems, networking, web application security, backend development, and operational troubleshooting.
-
-My work combines software engineering and cybersecurity through projects involving secure authentication systems, centralized logging, role-based healthcare platforms, vulnerability testing, and security monitoring. I have practical experience with PHP, Python, MySQL, Linux environments, Git, and security tooling including Burp Suite, Wireshark, Wazuh, and Nmap.
-
-I’m particularly interested in application security, platform engineering, DevSecOps, observability, and secure backend architecture. Alongside development work, I actively build homelabs and security tooling to strengthen both defensive and offensive security skills.
-
-Currently seeking opportunities in cybersecurity, application security, platform engineering, or security-focused backend development where I can contribute to reliable and secure systems while continuing to grow technically.
-
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Education</h3>
-     <ul>
-      <li>BSc Computer Science – Catholic University of Eastern Africa (Expected 2026)</li>
-      <li>BSc Electrical & Electronic Engineering (Coursework) – JKUAT (2010–2016)</li>
-    </ul> 
-    </div>
-
-    <div class="card">
-      <h3>Experience</h3>
-      <ul>
-        <li>IT Support & Networking Intern – CUEA (2025)</li>
-        <ul>
-          <li>Supported production network infrastructure for academic and clinical systems </li>
-          <li>Diagnosed and resolved connectivity and access issues using structured root-cause analysis </li>
-          <li>Configured and deployed wireless access points to improve network coverage</li>
-          <li>Assisted users with technical issues while maintaining security best practices </li>
-          <li>Worked with IT teams to ensure system reliability and data protection </li>
-        </ul>
-    </ul>
-    </div>
-
-    <div class="card">
-      <h2>Skills</h2>
-        <li>Network Troubleshooting (LAN/WLAN)</li>
-        <li>Linux Administration (Intermediate)</li>
-        <li>PHP & MySQL (Proficient)</li>
-    </div>
-
-    <div class="card">
-      <h3>Learning & Interests</h3>
-      <p>
-        Currently learning web application security, vulnerability testing, and secure 
-        system architecture. Interested in ethical hacking and bug bounties.
-      </p>
-    </div>
-  </section>
-
+    <p class="hero-links">
+      <a href="mailto:geogitura@gmail.com">Email</a> ·
+      <a href="https://github.com/giturag">GitHub</a> ·
+      <a href="https://linkedin.com/in/george-gitura">LinkedIn</a>
+      <!-- When cv.pdf is in the repo root, add: · <a href="/cv.pdf">Download CV</a> -->
+    </p>
+  </header>
 
   <section id="projects">
     <h2>Projects</h2>
 
     <div class="card">
       <h3><a href="projects/family-health-dashboard.html">Family Health Dashboard</a></h3>
-        <p>Role-based healthcare system using PHP and MySQL.</p>
-        <p><strong>Technologies:</strong> PHP, MySQL, HTML, Linux</p>
-        <a href="https://github.com/giturag/family-health-dashboard" class="btn">View on GitHub</a>
+      <p>Role-based healthcare web app with separate access for patients (and dependents), doctors, lab technicians and admins.</p>
+      <p><strong>Technologies:</strong> PHP, MySQL, HTML, Linux</p>
+      <a href="https://github.com/giturag/family-health-dashboard" class="btn">View on GitHub</a>
     </div>
+
+    <!--
+    Add the next project here when it is ready to show. Example:
+    <div class="card">
+      <h3><a href="projects/your-project.html">Project name</a></h3>
+      <p>One line on what it does.</p>
+      <p><strong>Technologies:</strong> ...</p>
+      <a href="https://github.com/giturag/your-repo" class="btn">View on GitHub</a>
+    </div>
+
+    Wazuh monitoring lab: add a card once the lab is running and you have screenshots.
+    -->
   </section>
+
   <section id="labs">
-    <h2>Lab Challenges</h2>
+    <h2>Lab Write-ups</h2>
 
     <div class="card">
-      <h3><a href="labs/attacktive-directory-walkthrough.html">TryHackMe: Attacktive Directory Walkthrough</a></h3>
-      <p><strong>Problem:</strong>Enumerating and Exploiting a vulnerable Domain Controller.</p>
-      <p><strong>Approach:</strong>User Enumeration, hash extration and Privilege Escalation</p>
-      <p><strong>Tools:</strong>Nmap, Enum4linux, Impacket</p>
-      <p><strong>Lessons:</strong>Some vulnerabilities of Active Directories</p>
+      <h3><a href="labs/attacktive-directory-walkthrough.html">TryHackMe: Attacktive Directory</a></h3>
+      <p><strong>Problem:</strong> Enumerating and exploiting a vulnerable Domain Controller.</p>
+      <p><strong>Approach:</strong> User enumeration, hash extraction and privilege escalation.</p>
+      <p><strong>Tools:</strong> Nmap, Enum4linux, Impacket</p>
+      <p><strong>Lessons:</strong> Common weaknesses in Active Directory environments.</p>
+    </div>
+
+    <p><a href="labs/index.html">View all write-ups →</a></p>
+  </section>
+
+  <!-- Filled automatically from your GitHub repos; hides itself when none match. -->
+  <section id="security-tools" hidden>
+    <h2>Security Tools</h2>
+    <div id="tools-container" class="tools-grid"></div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="card">
+      <h3>IT Support &amp; Networking Intern, CUEA (2025)</h3>
+      <ul>
+        <li>Supported production network infrastructure for academic and clinical systems</li>
+        <li>Diagnosed and resolved connectivity and access issues using structured root-cause analysis</li>
+        <li>Configured and deployed wireless access points to improve network coverage</li>
+        <li>Assisted users with technical issues while maintaining security best practices</li>
+        <li>Worked with IT teams to ensure system reliability and data protection</li>
+        <!-- Add numbers if you have them: how many access points, areas covered, users supported. -->
+      </ul>
     </div>
   </section>
 
-  <section id="security-tools">
-    <h2>Security Tools</h2>
-    <div id="tools-container" class="tools-grid"></div>
+  <section id="skills">
+    <h2>Skills</h2>
+
+    <div class="card">
+      <p><strong>Backend:</strong> PHP &amp; MySQL (proficient), Python, Git</p>
+      <p><strong>Security:</strong> Burp Suite, Nmap, Wireshark</p>
+      <p><strong>Systems &amp; networking:</strong> Linux administration (intermediate), LAN/WLAN troubleshooting</p>
+      <p><strong>Currently learning:</strong> Wazuh and SIEM monitoring, web application security</p>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education &amp; Training</h2>
+
+    <div class="card">
+      <ul>
+        <li>BSc Computer Science, Catholic University of Eastern Africa (graduating October 2026)</li>
+        <li>Cyber Shujaa cybersecurity training</li>
+        <li>BSc Electrical &amp; Electronic Engineering (coursework), JKUAT (2010–2016)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+
+    <div class="card">
+      <p>
+        I'm a Computer Science graduate with a background in networking and Linux. I like the point
+        where software development and security meet: building systems that work, then checking
+        that they can't easily be broken.
+      </p>
+      <p>
+        I build with PHP, Python and MySQL, and use security tools including Burp Suite, Wireshark
+        and Nmap. I'm currently learning Wazuh and SIEM monitoring, and I practise on TryHackMe and
+        HackTheBox. I'm interested in application security, secure backend design and bug bounties.
+      </p>
+    </div>
   </section>
 
   <section id="contact">
