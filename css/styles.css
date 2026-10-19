@@ -449,3 +449,89 @@ pre {
     font-size: 0.95rem;
   }
 }
+
+
+/* =========================
+   HERO + MOBILE ADDITIONS
+========================= */
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+header .tagline {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-top: 4px;
+}
+
+header .summary {
+  max-width: 620px;
+  margin: 12px auto 0;
+}
+
+header .hero-links {
+  margin-top: 14px;
+}
+
+header .hero-links a {
+  display: inline-block;
+  padding: 6px 4px;
+}
+
+/* Long words and URLs must not push the page wider than the screen */
+a, p, li {
+  overflow-wrap: anywhere;
+}
+
+/* Keep ordinary lists tidy inside cards */
+.card ul {
+  padding-left: 20px;
+  margin: 8px 0 0;
+}
+
+.card li {
+  margin: 6px 0;
+}
+
+/* Code blocks: scroll sideways inside the block, not the page */
+pre {
+  max-width: 100%;
+  white-space: pre;
+}
+
+/* Easier tapping on touch screens */
+.nav-links a,
+.dark-toggle {
+  padding: 8px 4px;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 12px;
+  }
+
+  header {
+    padding: 28px 14px;
+  }
+
+  header .tagline {
+    font-size: 0.98rem;
+  }
+
+  .screenshot {
+    margin: 16px 0;
+  }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .tool-card {
+    transition: none;
+  }
+}
